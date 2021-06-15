@@ -1,25 +1,32 @@
+document.querySelector('.autocomplete').addEventListener('keydown', function(e) {
+// Enter is pressed
+    if (e.keyCode == 13) { searchWeather(); }
 
-  const input = document.querySelector('.autocomplete');
+});
 
-  const options = {
-   types: ['(cities)'],
-         componentRestrictions: {
-           country: "us"
-         }
- };
+
+const input = document.querySelector('.autocomplete');
+
+const options = {
+ types: ['(cities)'],
+       componentRestrictions: {
+         country: "us"
+       }
+};
 const autocomplete = new google.maps.places.Autocomplete(input, options); 
 
 
 document.querySelector('.autocomplete').addEventListener('keydown', function(e) {
 // Enter is pressed
-    if (e.keyCode == 13) { searchWeather(); }
+  if (e.keyCode == 13) { searchWeather(); }
 
 
 });
 
-async function searchWeather() {
 
-  const searchTerm = input.value;
+async function searchWeather() {
+const weatherKey = config.weather_key;
+const searchTerm = input.value;
 const split = searchTerm.split(',');
 
 const city = split[0];
@@ -27,7 +34,7 @@ const city = split[0];
     let response = await axios.get('https://api.openweathermap.org/data/2.5/weather?', {
         params: {
           q: city,
-          appid: '55b1bfcad59eea54e711381bff6e693e',
+          appid: weatherKey,
           units: 'imperial'
         }
       });
@@ -45,13 +52,6 @@ function drawWeather(d){
   const feelsLike = Math.round((d.main.feels_like)*1);
   const icon = d.weather[0].icon;
   const iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
-
-
-  /*document.getElementById('icon').innerHTML = "<img src='" + iconUrl  + "'>";
-document.getElementById('description').innerHTML = d.weather[0].description;
-  document.getElementById('temp').innerHTML = farenheit + '&deg;';
-  document.getElementById('feelsLike').innerHTML = feelsLike + '&deg;';
-  document.getElementById('location').innerHTML = d.name;*/
 
   document.getElementById('weather').innerHTML = `
   <div class="card">
