@@ -1,3 +1,5 @@
+const weatherKey = config.weather_key;
+
 document.querySelector('.autocomplete').addEventListener('keydown', function(e) {
 // Enter is pressed
     if (e.keyCode == 13) { searchWeather(); }
@@ -25,7 +27,6 @@ document.querySelector('.autocomplete').addEventListener('keydown', function(e) 
 
 
 async function searchWeather() {
-const weatherKey = config.weather_key;
 const searchTerm = input.value;
 const split = searchTerm.split(',');
 
