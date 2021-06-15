@@ -1,5 +1,3 @@
-const weatherKey = config.weather_key;
-
 document.querySelector('.autocomplete').addEventListener('keydown', function(e) {
 // Enter is pressed
     if (e.keyCode == 13) { searchWeather(); }
@@ -35,7 +33,7 @@ const city = split[0];
     let response = await axios.get('https://api.openweathermap.org/data/2.5/weather?', {
         params: {
           q: city,
-          appid: weatherKey,
+          appid: '430e349c386f8b50a7af940b11b84cef',
           units: 'imperial'
         }
       });
