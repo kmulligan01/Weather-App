@@ -2,6 +2,10 @@
 
 Simple weather app utilizing Google places for a dropdown autocomplete of city and state. Put in your city, select from the dropdown, and search to view the weather.
 
+## Getting Started
+
+You can view the app here: https://kmulligan01.github.io/Weather-App/
+
 ## Built With
 
 * Vanilla JavaScript
